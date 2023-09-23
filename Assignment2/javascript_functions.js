@@ -1,3 +1,4 @@
+//Checks every element until it finds one that returns true as an input to a given function.
 const mySome = (callbackfn, array)=>{
     for(let i =0; i<array.length; i++){
         if(callbackfn(array[i],i,array)){
@@ -7,6 +8,7 @@ const mySome = (callbackfn, array)=>{
     return false;
 }
 
+//Checks every element until it finds one that does not return true as an input to a given function.
 const myEvery = (callbackfn, array)=>{
     for(let i = 0; i<array.length;i++){
         if(callbackfn(array[i],i,array) === false){
@@ -15,7 +17,7 @@ const myEvery = (callbackfn, array)=>{
     }
     return true;
 }
-
+//Goes through every element and executes the given function on each iteration, returning the cumulative value + initial value (optional).
 const myReduce = (callbackfn, array, initialVal)=>{
     let num = 0;
     for(let i = 0; i<array.length;i++){
