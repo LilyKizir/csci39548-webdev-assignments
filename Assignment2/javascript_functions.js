@@ -17,6 +17,6 @@ const myIndexOf = (array, target)=>{
 }
 
 //takes in an array of elements as well as an elementToAdd and append that element to the end of the array.
-const myPush = (array, elementtoAdd)=>{
-    array[array.length] = elementtoAdd;
+const myPush = (array, elementToAdd)=>{
+    array[array.length] = elementToAdd;
 }
