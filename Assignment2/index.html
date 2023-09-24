@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myEachInputDiv">
+      <h1>myEach() Function</h1>
+      <p>Please enter your array</p>
+      <textarea
+        name=""
+        id="myEachInput"
+        cols="60"
+        rows="10"
+        placeholder="[item1, item2, ...] or { a: 'somestring', b: 42,}"
+      ></textarea>
+    </div>
+    <div id="argument1">
+      <p>Please enter your argument</p>
+      <textarea
+        name=""
+        id="myEachArgument"
+        cols="60"
+        rows="10"
+        placeholder="(element, index /*, array */ ) => { 
+    //Enter algorithm here
+};"
+      >
+(element)=>{
+        element += 1;
+     }</textarea
+      >
+    </div>
+    <div id="results">Your Results Here</div>
+    <button id="myEachBtn" onclick="myEach()">Enter</button>
+    <script src="javascript_functions.js"></script>
+    <script src="function_buttons.js"></script>
+  </body>
+</html>
