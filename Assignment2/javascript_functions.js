@@ -1,5 +1,4 @@
-
-//Document with JS functions
+//JS functions
 const myEach = (callbackfn, array)=>{
     for(let i = 0; i < array.length; i++)
         callbackfn(array[i], i, array);
@@ -100,6 +99,18 @@ const grabValues = (object) => {
   return values;
 };
 
+
+/*JS Buttons
+Structure for those with callbackfn:
+1. Create custom function (described in the div with h3 in index.html)
+2. Get button and result
+3. Create click event for button:
+    3a. Get array from input text
+    3b. Optionally create new array
+    3c. Call the my- function
+    3d. Update result
+    3e. Console log
+*/
 window.onload = function(){ 
 
     //myEach() FUNCTION BUTTON 
@@ -123,8 +134,23 @@ myEachButton.addEventListener("click", () => {
      var myMapRes = document.getElementById("myMapResult");
      myMapButton.addEventListener("click", () => {
         var myMapArray = document.getElementById("myMapInput").value.replace(/\r\n/g,"\n").split("\n");  
-        let newArray = myMap(myMapCallFunction, myMapArray); //unlike myEach() this returns the new array
-        myMapRes.innerHTML = "Old Array: "  + myMapArray + "<br>" + "New Array: " + newArray;
-        console.log(newArray);
+        let newMapArray = myMap(myMapCallFunction, myMapArray); //unlike myEach() this returns the new array
+        myMapRes.innerHTML = "Old Array: "  + myMapArray + "<br>" + "New Array: " + newMapArray;
+        console.log(newMapArray);
      })
+
+     //myFilter() FUNCTION BUTTON
+     const myFilterCallFunction = (value)=> {
+        return value >= 10;
+      }
+      var myFilterButton = document.getElementById("myFilterButton");
+      var myFilterRes = document.getElementById("myFilterResult");
+
+      myFilterButton.addEventListener("click", ()=>{
+        var myFilterArray = document.getElementById("myFilterInput").value.replace(/\r\n/g,"\n").split("\n");
+        let newFilterArray = myFilter(myFilterCallFunction, myFilterArray); 
+        myFilterRes.innerHTML = "Old Array: " + myFilterArray + "<br>" + "New Array: " + newFilterArray;
+        console.log(newFilterArray);
+      })
+
 }
