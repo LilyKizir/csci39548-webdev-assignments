@@ -7,7 +7,7 @@ const myEach = (callbackfn, array)=>{
 
 const myMap = (callbackfn, array) =>{
     let new_arr = [];
-    for(let i = 0; i < array.len; i++){
+    for(let i = 0; i < array.length; i++){
         new_element = callbackfn(array[i], i, array);
         new_arr.push(new_element);
     }
@@ -99,3 +99,32 @@ const grabValues = (object) => {
 
   return values;
 };
+
+window.onload = function(){ 
+
+    //myEach() FUNCTION BUTTON 
+const myEachCallFunction = (element,index,array)=>{
+    array[index] = element * 2;
+ }
+    var myEachButton = document.getElementById("myEachButton");
+    var myEachRes = document.getElementById("myEachResult");
+myEachButton.addEventListener("click", () => {
+    var myEachArray = document.getElementById("myEachInput").value.replace(/\r\n/g,"\n").split("\n");  
+    myEach(myEachCallFunction, myEachArray); 
+    myEachRes.innerHTML = myEachArray;
+    console.log(myEachArray);
+    });
+
+    //myMap() FUNCTION BUTTON
+    const myMapCallFunction = (element)=>{
+        return element * 2;
+     }
+     var myMapButton = document.getElementById("myMapButton");
+     var myMapRes = document.getElementById("myMapResult");
+     myMapButton.addEventListener("click", () => {
+        var myMapArray = document.getElementById("myMapInput").value.replace(/\r\n/g,"\n").split("\n");  
+        let newArray = myMap(myMapCallFunction, myMapArray); //unlike myEach() this returns the new array
+        myMapRes.innerHTML = "Old Array: "  + myMapArray + "<br>" + "New Array: " + newArray;
+        console.log(newArray);
+     })
+}
