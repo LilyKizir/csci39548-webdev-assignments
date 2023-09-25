@@ -166,4 +166,50 @@ myEachButton.addEventListener("click", () => {
         mySomeRes.innerHTML = "Answer: " + mySomeAnswer;
         console.log(mySomeAnswer);
     })
+
+
+// myIndexOf() button
+    let myIndexOfButton = document.getElementById("myIndexOfButton")
+    let myIndexOfResult = document.getElementById("myIndexOfResult")
+
+    myIndexOfButton.addEventListener("click", ()=>{
+        let myIndexOfArray = document.getElementById("myIndexOfArray").value.replace(/\r\n/g,"\n").split("\n");
+        let myIndexOfTarget = document.getElementById("myIndexOfTarget").value
+
+        const res = myIndexOf(myIndexOfArray, myIndexOfTarget);
+        console.log(myIndexOfArray)
+        console.log(myIndexOfTarget)
+        myIndexOfResult.innerHTML = res;
+
+    })
+
+// myIndexOf() button
+let myPushButton = document.getElementById("myPushButton")
+let myPushResult = document.getElementById("myPushResult")
+
+myPushButton.addEventListener("click", ()=>{
+    let myPushArray = document.getElementById("myPushArray").value.replace(/\r\n/g,"\n").split("\n");
+    let myPushElement = document.getElementById("myPushElement").value
+
+    myPush(myPushArray, myPushElement);
+
+    console.log(myPushArray)
+    myPushResult.innerHTML = myPushArray;
+
+})
+
+// myLastIndexOf() button
+let myLastIndexOfButton = document.getElementById("myLastIndexOfButton")
+let myLastIndexOfResult = document.getElementById("myLastIndexOfResult")
+
+myLastIndexOfButton.addEventListener("click", ()=>{
+    let myLastIndexOfArray = document.getElementById("myLastIndexOfArray").value.replace(/\r\n/g,"\n").split("\n");
+    let myLastIndexOfTarget = document.getElementById("myLastIndexOfTarget").value
+
+    const result = myLastIndexOf(myLastIndexOfArray, myLastIndexOfTarget);
+    myLastIndexOfResult.innerHTML = result;
+
+})
+
 }
+
