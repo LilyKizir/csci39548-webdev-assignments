@@ -153,4 +153,17 @@ myEachButton.addEventListener("click", () => {
         console.log(newFilterArray);
       })
 
+    //mySome() FUNCTION BUTTON
+    const mySomeCallFunction = (value)=> {
+        return value >= 10
+    }
+    var mySomeButton = document.getElementById("mySomeButton");
+    var mySomeRes = document.getElementById("mySomeResult");
+
+    mySomeButton.addEventListener("click", ()=>{
+        var mySomeArray = document.getElementById("mySomeInput").value.replace(/\r\n/g,"\n").split("\n");
+        let mySomeAnswer = mySome(mySomeCallFunction,mySomeArray);
+        mySomeRes.innerHTML = "Answer: " + mySomeAnswer;
+        console.log(mySomeAnswer);
+    })
 }
