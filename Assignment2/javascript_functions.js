@@ -21,9 +21,9 @@ const myFilter = (callbackfn, array) => {
 };
 
 //Checks every element until it finds one that returns true as an input to a given function.
-const mySome = (callbackfn, array) => {
+const mySome = (target, array) => {
   for (let i = 0; i < array.length; i++) {
-    if (callbackfn(array[i], i, array)) {
+    if (array[i] >= target) {
       return true;
     }
   }
@@ -31,9 +31,9 @@ const mySome = (callbackfn, array) => {
 };
 
 //Checks every element until it finds one that does not return true as an input to a given function.
-const myEvery = (callbackfn, array) => {
+const myEvery = (target, array) => {
   for (let i = 0; i < array.length; i++) {
-    if (callbackfn(array[i], i, array) === false) {
+    if (array[i] < target) {
       return false;
     }
   }
@@ -41,14 +41,16 @@ const myEvery = (callbackfn, array) => {
 };
 
 //Goes through every element and executes the given function on each iteration, returning the cumulative value + initial value (optional).
-const myReduce = (callbackfn, array, initialVal) => {
-  let num = 0;
+const myReduce = (array, initialVal) => {
+  let sum;
+  if (initialVal.length > 0) {
+    sum = JSON.parse(initialVal);
+  } else sum = 0;
+  console.log(sum);
   for (let i = 0; i < array.length; i++) {
-    num = callbackfn(num, array[i], i, array);
+    sum += array[i];
   }
-  if (initialVal != undefined) {
-    return num + initialVal;
-  } else return num;
+  return sum;
 };
 
 //takes in an array of eleents and indicate wheter or not a target element is contained in input array
@@ -111,10 +113,7 @@ window.onload = function () {
   var myEachButton = document.getElementById("myEachButton");
   var myEachRes = document.getElementById("myEachResult");
   myEachButton.addEventListener("click", () => {
-    var myEachArray = document
-      .getElementById("myEachInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
+    var myEachArray = JSON.parse(document.getElementById("myEachInput").value);
     myEach(myEachCallFunction, myEachArray);
     myEachRes.innerHTML = myEachArray;
     console.log(myEachArray);
@@ -127,10 +126,7 @@ window.onload = function () {
   var myMapButton = document.getElementById("myMapButton");
   var myMapRes = document.getElementById("myMapResult");
   myMapButton.addEventListener("click", () => {
-    var myMapArray = document
-      .getElementById("myMapInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
+    var myMapArray = JSON.parse(document.getElementById("myMapInput").value);
     let newMapArray = myMap(myMapCallFunction, myMapArray); //unlike myEach() this returns the new array
     myMapRes.innerHTML =
       "Old Array: " + myMapArray + "<br>" + "New Array: " + newMapArray;
@@ -145,10 +141,9 @@ window.onload = function () {
   var myFilterRes = document.getElementById("myFilterResult");
 
   myFilterButton.addEventListener("click", () => {
-    var myFilterArray = document
-      .getElementById("myFilterInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
+    var myFilterArray = JSON.parse(
+      document.getElementById("myFilterInput").value
+    );
     let newFilterArray = myFilter(myFilterCallFunction, myFilterArray);
     myFilterRes.innerHTML =
       "Old Array: " + myFilterArray + "<br>" + "New Array: " + newFilterArray;
@@ -163,28 +158,28 @@ window.onload = function () {
   var mySomeRes = document.getElementById("mySomeResult");
 
   mySomeButton.addEventListener("click", () => {
-    var mySomeArray = document
-      .getElementById("mySomeInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let mySomeAnswer = mySome(mySomeCallFunction, mySomeArray);
+    var mySomeArray = JSON.parse(document.getElementById("mySomeInput").value);
+    var mySomeTarget = JSON.parse(
+      document.getElementById("mySomeTarget").value
+    );
+
+    let mySomeAnswer = mySome(mySomeTarget, mySomeArray);
     mySomeRes.innerHTML = "Answer: " + mySomeAnswer;
     console.log(mySomeAnswer);
   });
 
   //myEvery() FUNCTION BUTTON
-  const myEveryCallFunction = (value) => {
-    return value >= 10;
-  };
   var myEveryButton = document.getElementById("myEveryButton");
   var myEveryRes = document.getElementById("myEveryResult");
 
   myEveryButton.addEventListener("click", () => {
-    var myEveryArray = document
-      .getElementById("myEveryInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let myEveryAnswer = myEvery(myEveryCallFunction, myEveryArray);
+    var myEveryArray = JSON.parse(
+      document.getElementById("myEveryInput").value
+    );
+    var myEveryTarget = JSON.parse(
+      document.getElementById("myEveryTarget").value
+    );
+    let myEveryAnswer = myEvery(myEveryTarget, myEveryArray);
     myEveryRes.innerHTML = "Answer: " + myEveryAnswer;
     console.log(myEveryAnswer);
   });
@@ -198,11 +193,11 @@ window.onload = function () {
   var myReduceRes = document.getElementById("myReduceResult");
 
   myReduceButton.addEventListener("click", () => {
-    var myReduceArray = document
-      .getElementById("myReduceInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let myReduceAnswer = myReduce(myFunc, myReduceArray);
+    var myReduceArray = JSON.parse(
+      document.getElementById("myReduceInput").value
+    );
+    var myReduceTarget = document.getElementById("myReduceTarget").value;
+    let myReduceAnswer = myReduce(myReduceArray, myReduceTarget);
     myReduceRes.innerHTML = "Answer: " + myReduceAnswer;
     console.log(myReduceAnswer);
   });
@@ -212,11 +207,12 @@ window.onload = function () {
   var myIncludesRes = document.getElementById("myIncludesResult");
 
   myIncludesButton.addEventListener("click", () => {
-    var myIncludesArray = document
-      .getElementById("myIncludesInput")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    var myIncludesTarget = document.getElementById("myIncludesTarget").value;
+    var myIncludesArray = JSON.parse(
+      document.getElementById("myIncludesInput").value
+    );
+    var myIncludesTarget = JSON.parse(
+      document.getElementById("myIncludesTarget").value
+    );
     let myIncludesAnswer = myIncludes(myIncludesArray, myIncludesTarget);
     myIncludesRes.innerHTML = "Answer: " + myIncludesAnswer;
     console.log(myIncludesAnswer);
@@ -227,11 +223,12 @@ window.onload = function () {
   let myIndexOfResult = document.getElementById("myIndexOfResult");
 
   myIndexOfButton.addEventListener("click", () => {
-    let myIndexOfArray = document
-      .getElementById("myIndexOfArray")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let myIndexOfTarget = document.getElementById("myIndexOfTarget").value;
+    let myIndexOfArray = JSON.parse(
+      document.getElementById("myIndexOfArray").value
+    );
+    let myIndexOfTarget = JSON.parse(
+      document.getElementById("myIndexOfTarget").value
+    );
 
     const res = myIndexOf(myIndexOfArray, myIndexOfTarget);
     console.log(myIndexOfArray);
@@ -244,11 +241,10 @@ window.onload = function () {
   let myPushResult = document.getElementById("myPushResult");
 
   myPushButton.addEventListener("click", () => {
-    let myPushArray = document
-      .getElementById("myPushArray")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let myPushElement = document.getElementById("myPushElement").value;
+    let myPushArray = JSON.parse(document.getElementById("myPushArray").value);
+    let myPushElement = JSON.parse(
+      document.getElementById("myPushElement").value
+    );
 
     myPush(myPushArray, myPushElement);
 
@@ -261,13 +257,12 @@ window.onload = function () {
   let myLastIndexOfResult = document.getElementById("myLastIndexOfResult");
 
   myLastIndexOfButton.addEventListener("click", () => {
-    let myLastIndexOfArray = document
-      .getElementById("myLastIndexOfArray")
-      .value.replace(/\r\n/g, "\n")
-      .split("\n");
-    let myLastIndexOfTarget = document.getElementById(
-      "myLastIndexOfTarget"
-    ).value;
+    let myLastIndexOfArray = JSON.parse(
+      document.getElementById("myLastIndexOfArray").value
+    );
+    let myLastIndexOfTarget = JSON.parse(
+      document.getElementById("myLastIndexOfTarget").value
+    );
 
     const result = myLastIndexOf(myLastIndexOfArray, myLastIndexOfTarget);
     myLastIndexOfResult.innerHTML = result;
