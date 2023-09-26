@@ -1,30 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-  var grabKeysButton = document.getElementById("grabKeysButton");
-  var grabValButton = document.getElementById("grabValuesButton");
+window.onload = function () {
+  var grabKeysBtn = document.getElementById("grabKeysButton");
+  var grabKeysRes = document.getElementById("grabKeysResults");
 
-  if (grabKeysButton) {
-    grabKeysButton.addEventListener("click", () => {
-      var grabKeysObj = document.getElementById("grabKeysText").value;
-      var grabKeysRes = document.getElementById("grabKeysResult");
+  grabKeysBtn.addEventListener("click", () => {
+    var grabKeysObj = document.getElementById("grabKeysText").value;
 
-      grabKeysObj = JSON.parse(grabKeysObj);
+    grabKeysObj = JSON.parse(grabKeysObj);
 
-      console.log(grabKeysObj);
+    console.log(grabKeysObj);
 
-      grabKeysRes.innerHTML = grabKeys(grabKeysObj);
-    });
-  }
+    grabKeysRes.innerHTML = grabKeys(grabKeysObj);
+  });
 
-  if (grabValButton) {
-    grabValButton.addEventListener("click", () => {
-      var grabValObj = document.getElementById("grabValuesText").value;
-      var grabValRes = document.getElementById("grabValuesResult");
+  var grabValsBtn = document.getElementById("grabValuesButton");
+  var grabValsRes = document.getElementById("grabValuesResults");
 
-      grabValObj = JSON.parse(grabValObj);
+  grabValsBtn.addEventListener("click", () => {
+    var grabValsObj = document.getElementById("grabValuesText").value;
 
-      console.log(grabValObj);
+    grabValsObj = JSON.parse(grabValsObj);
 
-      grabValRes.innerHTML = grabKeys(grabValsObj);
-    });
-  }
-});
+    console.log(grabValsObj);
+
+    grabValsRes.innerHTML = grabValues(grabValsObj);
+  });
+};
