@@ -1,0 +1,13 @@
+td {
+  border: #ccc 1px solid;
+  height: 30px;
+  width: 30px;
+}
+
+tr:nth-child(1) td:nth-child(2) {
+  background-color: aqua;
+}
+
+tr:nth-child(2) {
+  background-color: yellow;
+}
