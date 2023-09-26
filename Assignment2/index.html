@@ -118,7 +118,7 @@
       </p>
     </div>
     <button id="mySomeButton">Enter</button>
-
+    
     <!--myEvery()-->
     <div id="myEveryInputDiv">
         <h1>myEvery() Function</h1>
@@ -146,8 +146,8 @@
         </p>
       </div>
       <button id="myEveryButton">Enter</button>
-
-    <!--myReduce()-->
+    
+        <!--myReduce()-->
     <div id="myReduceInputDiv">
         <h1>myReduce() Function</h1>
         <p>Please enter your array</p>
@@ -174,14 +174,15 @@
         </p>
       </div>
       <button id="myReduceButton">Enter</button>
-
-      <!--myIncludes()-->
+    
+   <!--myIncludes()-->
     <div id="myIncludesInputDiv">
         <h1>myIncludes() Function</h1>
         <p>Please enter your array</p>
         <textarea
           name=""
           id="myIncludesInput"
+
           cols="60"
           rows="10"
           placeholder="Please enter one element per line. Example:
@@ -212,5 +213,95 @@
         </p>
       </div>
       <button id="myIncludesButton">Enter</button>
+    
+    <!-- myIndexOf() -->
+    <h1>myIndexOf() function</h1>
+    <div id = "myIndexOfInputs">
+      <p>Please enter your array:</p>
+      <textarea
+        name=""
+        id="myIndexOfArray"
+        cols="60"
+        rows="10"
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+      ></textarea>
+      <p>Please enter the element in your array whose index you want:</p>
+      <textarea
+        name=""
+        id="myIndexOfTarget"
+        cols="60"
+        rows="10"
+        placeholder="Please enter target value. Index of first occurence of element will be provided. If no such index exists, -1 will be returned."
+      ></textarea>
+      <h3>
+        Function returns index of a target value in an array.
+      </h3>
+      <div>
+        Result: <p id = "myIndexOfResult"></p>
+      </div>
+      <button id = "myIndexOfButton"> Enter </button>
+    </div>
+
+      <!-- myPush() -->
+      <h1>myPush() function</h1>
+      <div id = "myPushInputs">
+        <p>Please enter your array:</p>
+        <textarea
+          name=""
+          id="myPushArray"
+          cols="60"
+          rows="10"
+          placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+        ></textarea>
+        <p>Please enter the element in your array whose index you want:</p>
+        <textarea
+          name=""
+          id="myPushElement"
+          cols="60"
+          rows="10"
+          placeholder="Please enter the element you want to push at the end of your array."
+        ></textarea>
+        <h3>
+          Pushes an element to the end of the array 
+        </h3>
+        <div>
+          Result: <p id = "myPushResult"></p>
+        </div>
+        <button id = "myPushButton"> Enter </button>
+      </div>
+
+      <!-- myLastIndexOf() -->
+      <h1>myLastIndexOf() function</h1>
+      <div id = "myLastIndexOfInputs">
+        <p>Please enter your array:</p>
+        <textarea
+          name=""
+          id="myLastIndexOfArray"
+        <p>Please enter the element in your array whose index you want:</p>
+        <textarea
+          name=""
+          id="myLastIndexOfTarget"
+          cols="60"
+          rows="10"
+          placeholder="Please enter target value. Index of last occurence of element will be provided. If no such index exists, -1 will be returned."
+        ></textarea>
+        <h3>
+          Function returns last index of a target value in an array.
+        </h3>
+        <div>
+          Result: <p id = "myLastIndexOfResult"></p>
+        </div>
+        <button id = "myLastIndexOfButton"> Enter </button>
+      </div>
   </body>
 </html>
