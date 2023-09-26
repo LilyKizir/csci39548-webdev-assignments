@@ -114,12 +114,12 @@ Structure for those with callbackfn:
 window.onload = function(){ 
 
     //myEach() FUNCTION BUTTON 
-const myEachCallFunction = (element,index,array)=>{
+    const myEachCallFunction = (element,index,array)=>{
     array[index] = element * 2;
- }
+    }
     var myEachButton = document.getElementById("myEachButton");
     var myEachRes = document.getElementById("myEachResult");
-myEachButton.addEventListener("click", () => {
+    myEachButton.addEventListener("click", () => {
     var myEachArray = document.getElementById("myEachInput").value.replace(/\r\n/g,"\n").split("\n");  
     myEach(myEachCallFunction, myEachArray); 
     myEachRes.innerHTML = myEachArray;
@@ -128,7 +128,7 @@ myEachButton.addEventListener("click", () => {
 
     //myMap() FUNCTION BUTTON
     const myMapCallFunction = (element)=>{
-        return element * 2;
+        return element * 10;
      }
      var myMapButton = document.getElementById("myMapButton");
      var myMapRes = document.getElementById("myMapResult");
@@ -166,8 +166,48 @@ myEachButton.addEventListener("click", () => {
         mySomeRes.innerHTML = "Answer: " + mySomeAnswer;
         console.log(mySomeAnswer);
     })
+  
+      //myEvery() FUNCTION BUTTON
+    const myEveryCallFunction = (value)=> {
+        return value >= 10
+    }
+    var myEveryButton = document.getElementById("myEveryButton");
+    var myEveryRes = document.getElementById("myEveryResult");
 
+    myEveryButton.addEventListener("click", ()=>{
+        var myEveryArray = document.getElementById("myEveryInput").value.replace(/\r\n/g,"\n").split("\n");
+        let myEveryAnswer = myEvery(myEveryCallFunction,myEveryArray);
+        myEveryRes.innerHTML = "Answer: " + myEveryAnswer;
+        console.log(myEveryAnswer);
+    })
+  
+      //myReduce() FUNCTION BUTTON
+    function myFunc(total, num) {
+        return total += num
+    }
 
+    var myReduceButton = document.getElementById("myReduceButton");
+    var myReduceRes = document.getElementById("myReduceResult");
+
+    myReduceButton.addEventListener("click", ()=>{
+        var myReduceArray = document.getElementById("myReduceInput").value.replace(/\r\n/g,"\n").split("\n");
+        let myReduceAnswer = myReduce(myFunc, myReduceArray,);
+        myReduceRes.innerHTML = "Answer: " + myReduceAnswer;
+        console.log(myReduceAnswer);
+    })
+
+    //myIncludes() FUNCTION BUTTON
+    var myIncludesButton = document.getElementById("myIncludesButton");
+    var myIncludesRes = document.getElementById("myIncludesResult");
+
+    myIncludesButton.addEventListener("click", ()=>{
+        var myIncludesArray = document.getElementById("myIncludesInput").value.replace(/\r\n/g,"\n").split("\n");
+        var myIncludesTarget = document.getElementById("myIncludesTarget").value;
+        let myIncludesAnswer = myIncludes(myIncludesArray,myIncludesTarget);
+        myIncludesRes.innerHTML = "Answer: " + myIncludesAnswer;
+        console.log(myIncludesAnswer);
+    })
+  
 // myIndexOf() button
     let myIndexOfButton = document.getElementById("myIndexOfButton")
     let myIndexOfResult = document.getElementById("myIndexOfResult")
@@ -183,7 +223,7 @@ myEachButton.addEventListener("click", () => {
 
     })
 
-// myIndexOf() button
+// myPushButton() button
 let myPushButton = document.getElementById("myPushButton")
 let myPushResult = document.getElementById("myPushResult")
 
@@ -210,6 +250,5 @@ myLastIndexOfButton.addEventListener("click", ()=>{
     myLastIndexOfResult.innerHTML = result;
 
 })
-
 }
 
