@@ -1,16 +1,17 @@
-//Document with JS functions
-const myEach = (callbackfn, array) => {
-  for (let i = 0; i < array.length; i++) callbackfn(array[i], i, array);
-};
+//JS functions
+const myEach = (callbackfn, array)=>{
+    for(let i = 0; i < array.length; i++)
+        callbackfn(array[i], i, array);
+}
 
-const myMap = (callbackfn, array) => {
-  let new_arr = [];
-  for (let i = 0; i < array.len; i++) {
-    new_element = callbackfn(array[i], i, array);
-    new_arr.push(new_element);
-  }
-  return new_arr;
-};
+const myMap = (callbackfn, array) =>{
+    let new_arr = [];
+    for(let i = 0; i < array.length; i++){
+        new_element = callbackfn(array[i], i, array);
+        new_arr.push(new_element);
+    }
+    return new_arr;
+}
 
 const myFilter = (callbackfn, array) => {
   let new_arr = [];
@@ -91,3 +92,157 @@ const grabValues = (object) => {
 
   return values;
 };
+
+
+/*JS Buttons
+Structure for those with callbackfn:
+1. Create custom function (described in the div with h3 in index.html)
+2. Get button and result
+3. Create click event for button:
+    3a. Get array from input text
+    3b. Optionally create new array
+    3c. Call the my- function
+    3d. Update result
+    3e. Console log
+*/
+window.onload = function(){ 
+
+    //myEach() FUNCTION BUTTON 
+    const myEachCallFunction = (element,index,array)=>{
+    array[index] = element * 2;
+    }
+    var myEachButton = document.getElementById("myEachButton");
+    var myEachRes = document.getElementById("myEachResult");
+    myEachButton.addEventListener("click", () => {
+    var myEachArray = document.getElementById("myEachInput").value.replace(/\r\n/g,"\n").split("\n");  
+    myEach(myEachCallFunction, myEachArray); 
+    myEachRes.innerHTML = myEachArray;
+    console.log(myEachArray);
+    });
+
+    //myMap() FUNCTION BUTTON
+    const myMapCallFunction = (element)=>{
+        return element * 10;
+     }
+     var myMapButton = document.getElementById("myMapButton");
+     var myMapRes = document.getElementById("myMapResult");
+     myMapButton.addEventListener("click", () => {
+        var myMapArray = document.getElementById("myMapInput").value.replace(/\r\n/g,"\n").split("\n");  
+        let newMapArray = myMap(myMapCallFunction, myMapArray); //unlike myEach() this returns the new array
+        myMapRes.innerHTML = "Old Array: "  + myMapArray + "<br>" + "New Array: " + newMapArray;
+        console.log(newMapArray);
+     })
+
+     //myFilter() FUNCTION BUTTON
+     const myFilterCallFunction = (value)=> {
+        return value >= 10;
+      }
+      var myFilterButton = document.getElementById("myFilterButton");
+      var myFilterRes = document.getElementById("myFilterResult");
+
+      myFilterButton.addEventListener("click", ()=>{
+        var myFilterArray = document.getElementById("myFilterInput").value.replace(/\r\n/g,"\n").split("\n");
+        let newFilterArray = myFilter(myFilterCallFunction, myFilterArray); 
+        myFilterRes.innerHTML = "Old Array: " + myFilterArray + "<br>" + "New Array: " + newFilterArray;
+        console.log(newFilterArray);
+      })
+
+    //mySome() FUNCTION BUTTON
+    const mySomeCallFunction = (value)=> {
+        return value >= 10
+    }
+    var mySomeButton = document.getElementById("mySomeButton");
+    var mySomeRes = document.getElementById("mySomeResult");
+
+    mySomeButton.addEventListener("click", ()=>{
+        var mySomeArray = document.getElementById("mySomeInput").value.replace(/\r\n/g,"\n").split("\n");
+        let mySomeAnswer = mySome(mySomeCallFunction,mySomeArray);
+        mySomeRes.innerHTML = "Answer: " + mySomeAnswer;
+        console.log(mySomeAnswer);
+    })
+  
+      //myEvery() FUNCTION BUTTON
+    const myEveryCallFunction = (value)=> {
+        return value >= 10
+    }
+    var myEveryButton = document.getElementById("myEveryButton");
+    var myEveryRes = document.getElementById("myEveryResult");
+
+    myEveryButton.addEventListener("click", ()=>{
+        var myEveryArray = document.getElementById("myEveryInput").value.replace(/\r\n/g,"\n").split("\n");
+        let myEveryAnswer = myEvery(myEveryCallFunction,myEveryArray);
+        myEveryRes.innerHTML = "Answer: " + myEveryAnswer;
+        console.log(myEveryAnswer);
+    })
+  
+      //myReduce() FUNCTION BUTTON
+    function myFunc(total, num) {
+        return total += num
+    }
+
+    var myReduceButton = document.getElementById("myReduceButton");
+    var myReduceRes = document.getElementById("myReduceResult");
+
+    myReduceButton.addEventListener("click", ()=>{
+        var myReduceArray = document.getElementById("myReduceInput").value.replace(/\r\n/g,"\n").split("\n");
+        let myReduceAnswer = myReduce(myFunc, myReduceArray,);
+        myReduceRes.innerHTML = "Answer: " + myReduceAnswer;
+        console.log(myReduceAnswer);
+    })
+
+    //myIncludes() FUNCTION BUTTON
+    var myIncludesButton = document.getElementById("myIncludesButton");
+    var myIncludesRes = document.getElementById("myIncludesResult");
+
+    myIncludesButton.addEventListener("click", ()=>{
+        var myIncludesArray = document.getElementById("myIncludesInput").value.replace(/\r\n/g,"\n").split("\n");
+        var myIncludesTarget = document.getElementById("myIncludesTarget").value;
+        let myIncludesAnswer = myIncludes(myIncludesArray,myIncludesTarget);
+        myIncludesRes.innerHTML = "Answer: " + myIncludesAnswer;
+        console.log(myIncludesAnswer);
+    })
+  
+// myIndexOf() button
+    let myIndexOfButton = document.getElementById("myIndexOfButton")
+    let myIndexOfResult = document.getElementById("myIndexOfResult")
+
+    myIndexOfButton.addEventListener("click", ()=>{
+        let myIndexOfArray = document.getElementById("myIndexOfArray").value.replace(/\r\n/g,"\n").split("\n");
+        let myIndexOfTarget = document.getElementById("myIndexOfTarget").value
+
+        const res = myIndexOf(myIndexOfArray, myIndexOfTarget);
+        console.log(myIndexOfArray)
+        console.log(myIndexOfTarget)
+        myIndexOfResult.innerHTML = res;
+
+    })
+
+// myPushButton() button
+let myPushButton = document.getElementById("myPushButton")
+let myPushResult = document.getElementById("myPushResult")
+
+myPushButton.addEventListener("click", ()=>{
+    let myPushArray = document.getElementById("myPushArray").value.replace(/\r\n/g,"\n").split("\n");
+    let myPushElement = document.getElementById("myPushElement").value
+
+    myPush(myPushArray, myPushElement);
+
+    console.log(myPushArray)
+    myPushResult.innerHTML = myPushArray;
+
+})
+
+// myLastIndexOf() button
+let myLastIndexOfButton = document.getElementById("myLastIndexOfButton")
+let myLastIndexOfResult = document.getElementById("myLastIndexOfResult")
+
+myLastIndexOfButton.addEventListener("click", ()=>{
+    let myLastIndexOfArray = document.getElementById("myLastIndexOfArray").value.replace(/\r\n/g,"\n").split("\n");
+    let myLastIndexOfTarget = document.getElementById("myLastIndexOfTarget").value
+
+    const result = myLastIndexOf(myLastIndexOfArray, myLastIndexOfTarget);
+    myLastIndexOfResult.innerHTML = result;
+
+})
+}
+

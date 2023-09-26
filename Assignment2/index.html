@@ -4,7 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <script src="javascript_functions.js"></script>
+  <script src="function_buttons.js"></script>
   <body>
+    <!--myEach()-->
     <div id="myEachInputDiv">
       <h1>myEach() Function</h1>
       <p>Please enter your array</p>
@@ -13,28 +16,292 @@
         id="myEachInput"
         cols="60"
         rows="10"
-        placeholder="[item1, item2, ...] or { a: 'somestring', b: 42,}"
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
       ></textarea>
     </div>
-    <div id="argument1">
-      <p>Please enter your argument</p>
+    <div>
+      <h3>
+      Function multiplies every element by 2.
+      </h3>
+    </div>
+    <div>Your Results Here
+      <p id="myEachResult"> 
+      </p>
+    </div>
+    <button id="myEachButton">Enter</button>
+
+    <!--myMap()-->
+    <div id="myMapInputDiv">
+      <h1>myMap() Function</h1>
+      <p>Please enter your array</p>
       <textarea
         name=""
-        id="myEachArgument"
+        id="myMapInput"
         cols="60"
         rows="10"
-        placeholder="(element, index /*, array */ ) => { 
-    //Enter algorithm here
-};"
-      >
-(element)=>{
-        element += 1;
-     }</textarea
-      >
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+      ></textarea>
     </div>
-    <div id="results">Your Results Here</div>
-    <button id="myEachBtn" onclick="myEach()">Enter</button>
-    <script src="javascript_functions.js"></script>
-    <script src="function_buttons.js"></script>
+    <div>
+      <h3>
+      Function creates new array with each element of the old array multiplied by 10.
+      </h3>
+    </div>
+    <div>Your Results Here
+      <p id="myMapResult"> 
+      </p>
+    </div>
+    <button id="myMapButton">Enter</button>
+
+    <!--myFilter()-->
+    <div id="myFilterInputDiv">
+      <h1>myFilter() Function</h1>
+      <p>Please enter your array</p>
+      <textarea
+        name=""
+        id="myFilterInput"
+        cols="60"
+        rows="10"
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+      ></textarea>
+    </div>
+    <div>
+      <h3>
+      Function creates new array with elements that are higher or equal to 10.
+      </h3>
+    </div>
+    <div>Your Results Here
+      <p id="myFilterResult"> 
+      </p>
+    </div>
+    <button id="myFilterButton">Enter</button>
+
+    <!--mySome()-->
+    <div id="mySomeInputDiv">
+      <h1>mySome() Function</h1>
+      <p>Please enter your array</p>
+      <textarea
+        name=""
+        id="mySomeInput"
+        cols="60"
+        rows="10"
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+      ></textarea>
+    </div>
+    <div>
+      <h3>
+      Function returns true if any element is bigger than or equal 10.
+      </h3>
+    </div>
+    <div>Your Results Here
+      <p id="mySomeResult"> 
+      </p>
+    </div>
+    <button id="mySomeButton">Enter</button>
+    
+    <!--myEvery()-->
+    <div id="myEveryInputDiv">
+        <h1>myEvery() Function</h1>
+        <p>Please enter your array</p>
+        <textarea
+          name=""
+          id="myEveryInput"
+          cols="60"
+          rows="10"
+          placeholder="Please enter one element per line. Example:
+  1
+  2
+  3
+  4
+  5"
+        ></textarea>
+      </div>
+      <div>
+        <h3>
+        Function returns true if ALL elements are bigger than or equal to 10.
+        </h3>
+      </div>
+      <div>Your Results Here
+        <p id="myEveryResult"> 
+        </p>
+      </div>
+      <button id="myEveryButton">Enter</button>
+    
+        <!--myReduce()-->
+    <div id="myReduceInputDiv">
+        <h1>myReduce() Function</h1>
+        <p>Please enter your array</p>
+        <textarea
+          name=""
+          id="myReduceInput"
+          cols="60"
+          rows="10"
+          placeholder="Please enter one element per line. Example:
+  1
+  2
+  3
+  4
+  5"
+        ></textarea>
+      </div>
+      <div>
+        <h3>
+        Function appends any elements to a "0"
+        </h3>
+      </div>
+      <div>Your Results Here
+        <p id="myReduceResult"> 
+        </p>
+      </div>
+      <button id="myReduceButton">Enter</button>
+    
+   <!--myIncludes()-->
+    <div id="myIncludesInputDiv">
+        <h1>myIncludes() Function</h1>
+        <p>Please enter your array</p>
+        <textarea
+          name=""
+          id="myIncludesInput"
+
+          cols="60"
+          rows="10"
+          placeholder="Please enter one element per line. Example:
+  1
+  2
+  3
+  4
+  5"
+        ></textarea>
+      </div>
+    <div id="myIncludesInputTargetDiv">
+        <p>Please enter your target</p>
+        <textarea
+          name=""
+          id="myIncludesTarget"
+          cols="40"
+          rows="1"
+          placeholder="Please enter your target."
+        ></textarea>
+    </div>
+      <div>
+        <h3>
+        Function returns true if your target is found in your array
+        </h3>
+      </div>
+      <div>Your Results Here
+        <p id="myIncludesResult"> 
+        </p>
+      </div>
+      <button id="myIncludesButton">Enter</button>
+    
+    <!-- myIndexOf() -->
+    <h1>myIndexOf() function</h1>
+    <div id = "myIndexOfInputs">
+      <p>Please enter your array:</p>
+      <textarea
+        name=""
+        id="myIndexOfArray"
+        cols="60"
+        rows="10"
+        placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+      ></textarea>
+      <p>Please enter the element in your array whose index you want:</p>
+      <textarea
+        name=""
+        id="myIndexOfTarget"
+        cols="60"
+        rows="10"
+        placeholder="Please enter target value. Index of first occurence of element will be provided. If no such index exists, -1 will be returned."
+      ></textarea>
+      <h3>
+        Function returns index of a target value in an array.
+      </h3>
+      <div>
+        Result: <p id = "myIndexOfResult"></p>
+      </div>
+      <button id = "myIndexOfButton"> Enter </button>
+    </div>
+
+      <!-- myPush() -->
+      <h1>myPush() function</h1>
+      <div id = "myPushInputs">
+        <p>Please enter your array:</p>
+        <textarea
+          name=""
+          id="myPushArray"
+          cols="60"
+          rows="10"
+          placeholder="Please enter one element per line. Example:
+1
+2
+3
+4
+5"
+        ></textarea>
+        <p>Please enter the element in your array whose index you want:</p>
+        <textarea
+          name=""
+          id="myPushElement"
+          cols="60"
+          rows="10"
+          placeholder="Please enter the element you want to push at the end of your array."
+        ></textarea>
+        <h3>
+          Pushes an element to the end of the array 
+        </h3>
+        <div>
+          Result: <p id = "myPushResult"></p>
+        </div>
+        <button id = "myPushButton"> Enter </button>
+      </div>
+
+      <!-- myLastIndexOf() -->
+      <h1>myLastIndexOf() function</h1>
+      <div id = "myLastIndexOfInputs">
+        <p>Please enter your array:</p>
+        <textarea
+          name=""
+          id="myLastIndexOfArray"
+        <p>Please enter the element in your array whose index you want:</p>
+        <textarea
+          name=""
+          id="myLastIndexOfTarget"
+          cols="60"
+          rows="10"
+          placeholder="Please enter target value. Index of last occurence of element will be provided. If no such index exists, -1 will be returned."
+        ></textarea>
+        <h3>
+          Function returns last index of a target value in an array.
+        </h3>
+        <div>
+          Result: <p id = "myLastIndexOfResult"></p>
+        </div>
+        <button id = "myLastIndexOfButton"> Enter </button>
+      </div>
   </body>
 </html>
