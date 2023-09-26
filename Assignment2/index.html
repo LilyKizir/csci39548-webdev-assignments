@@ -33,7 +33,7 @@
           id="myEachInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
@@ -56,7 +56,7 @@
           id="myMapInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
@@ -82,9 +82,9 @@
           id="myFilterInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
-[1,2,3,4,5]</textarea
+[1,2,3,40,50]</textarea
         >
       </div>
       <div class="argument">
@@ -108,14 +108,20 @@
           id="mySomeInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
       </div>
       <div class="argument">
         <p>Enter a number</p>
-        <textarea id="mySomeTarget" cols="30" rows="1">3</textarea>
+        <textarea 
+        id="mySomeTarget" 
+        cols="30" 
+        rows="1"
+        placeholder="Example: 5"
+        >
+3</textarea>
         <h3>
           Function returns true if any element is bigger than provided number.
         </h3>
@@ -135,14 +141,20 @@
           id="myEveryInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
       </div>
       <div class="argument">
         <p>Enter a number</p>
-        <textarea id="myEveryTarget" cols="30" rows="1">3</textarea>
+        <textarea 
+        id="myEveryTarget" 
+        cols="30" 
+        rows="1"
+        placeholder="Example: 5"
+        >
+3</textarea>
         <h3>
           Function returns true if ALL elements are bigger than or equal to
           provided number.
@@ -163,22 +175,22 @@
           id="myReduceInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
       </div>
-      <p>Please enter a number</p>
+      <p>Please enter a starting value (optional)</p>
       <div class="argument">
         <textarea
           id="myReduceTarget"
           cols="30"
-          rows="1"
+          rows="2"
           placeholder="Enter a number to add to the sum of the array elements."
         >
 10</textarea
         >
-        <h3>Function returns sum of the array</h3>
+        <h3>Function returns sum of the array plus the starting value (if included)</h3>
       </div>
       <div class="result">
         <p id="myReduceResult">Your Results Here</p>
@@ -195,7 +207,7 @@
           id="myIncludesInput"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
@@ -227,7 +239,7 @@
           id="myIndexOfArray"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
@@ -259,19 +271,20 @@
           id="myPushArray"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
+          placeholder="Enter your array. Example:[1,2,3,4,...]"
         >
 [1,2,3,4,5]</textarea
         >
       </div>
       <div class="argument">
-        <p>Please enter the element in your array whose index you want:</p>
+        <p>Please enter an element you wish to push:</p>
         <textarea
           id="myPushElement"
           cols="30"
           rows="3"
           placeholder="Please enter the element you want to push at the end of your array."
-        ></textarea>
+        >
+6</textarea>
         <h3>Pushes an element to the end of the array</h3>
       </div>
       <div class="result">
@@ -289,9 +302,8 @@
           id="myLastIndexOfArray"
           cols="30"
           rows="10"
-          placeholder="Enter one element per line. Example:&#10;1&#10;2&#10;3&#10;4&#10;5"
-        >
-[1,2,3,4,5]</textarea
+          placeholder="Enter your array. Example:[1,2,3,4,...]"        >
+[1,2,3,4,3]</textarea
         >
       </div>
       <div class="argument">
@@ -302,7 +314,8 @@
           cols="30"
           rows="5"
           placeholder="Please enter target value. Index of last occurence of element will be provided. If no such index exists, -1 will be returned."
-        ></textarea>
+        >
+3</textarea>
         <h3>Function returns last index of a target value in an array.</h3>
       </div>
       <div class="result">
