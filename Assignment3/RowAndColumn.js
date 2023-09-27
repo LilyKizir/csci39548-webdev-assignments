@@ -55,7 +55,7 @@ window.onload = function (){
             var cellWidh = table.rows[0].cells[0].offsetWidth;
             console.log(table.rows[0].cells[0].offsetWidth);
             table.rows[0].insertCell(-1);
-            if(table.rows[0].cells[0].offsetWidth != cellWidh){
+            if(table.rows[0].cells[0].offsetWidth != cellWidh && table.rows[0].length != 0){
                 alert("Whoa there, that's too many columns!")
             }
             else{
@@ -76,9 +76,15 @@ window.onload = function (){
         if(table.rows.length ===0){
             alert("There are no columns!");
         }
+        else if(table.rows[0].cells.length === 1){
+            let size = table.rows.length;
+            for(let i=0;i<size;i++){
+                table.deleteRow(0);
+            }
+        }
         else {
             for(let i=0;i<table.rows.length;i++){
-            table.rows[i].deleteCell(-1);
+                table.rows[i].deleteCell(-1);
         }        
         }
     });
