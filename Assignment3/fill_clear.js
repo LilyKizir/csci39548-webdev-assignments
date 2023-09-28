@@ -6,9 +6,17 @@ var fillbtn = document.getElementById("fillbtn");
 fillbtn.addEventListener("click", () => {
     var color = document.getElementById("colorPicker").value;
     cells.forEach((cell) => {
+            cell.style.backgroundColor = color;
+    });
+});
+
+var fillUncolored = document.getElementById("fillUncolored");
+fillUncolored.addEventListener("click", () => {
+    var cell_color = document.getElementById("colorPicker").value;
+    cells.forEach((cell) => {
         var cellBackgroundColor = window.getComputedStyle(cell).backgroundColor;
         if (cellBackgroundColor === "rgb(255, 255, 255)") {
-            cell.style.backgroundColor = color;
+            cell.style.backgroundColor = cell_color;
         }
     });
 });
