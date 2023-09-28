@@ -1,5 +1,5 @@
-// Get all the table cells
-const cells = document.querySelectorAll("td");
+//Get all the table cells
+var cells = document.querySelectorAll("td");
 
 // Add click event listener to each cell
 cells.forEach((cell) => {
