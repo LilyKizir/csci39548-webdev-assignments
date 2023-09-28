@@ -5,9 +5,9 @@ td {
 }
 
 tr:nth-child(1) td:nth-child(2) {
-  background-color: aqua;
+  background-color: pink;
 }
 
 tr:nth-child(2) {
-  background-color: yellow;
+  background-color: orange;
 }
