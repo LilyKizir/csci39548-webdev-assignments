@@ -6,7 +6,10 @@ var fillbtn = document.getElementById("fillbtn");
 fillbtn.addEventListener("click", () => {
     var color = document.getElementById("colorPicker").value;
     cells.forEach((cell) => {
-        cell.style.backgroundColor = color;
+        var cellBackgroundColor = window.getComputedStyle(cell).backgroundColor;
+        if (cellBackgroundColor === "rgb(255, 255, 255)") {
+            cell.style.backgroundColor = color;
+        }
     });
 });
 
