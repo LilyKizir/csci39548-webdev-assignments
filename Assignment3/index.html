@@ -3,14 +3,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="RowAndColumn.js"></script>
+    <script src="script.js"></script>
+    <script src="fill_clear.js"></script>
     <title>Document</title>
   </head>
   <body>
     <div class="toolbar">
-      <button>Add row</button>
-      <button>Remove row</button>
-      <button>Add column</button>
-      <button>Remove column</button>
+    <button id="AddRow"> Add Row </button>
+    <button id="RemoveRow">Remove Row</button>
+    <button id="AddColumn">Add Column</button>
+    <button id="RemoveColumn">Remove Column</button>
       <button>Draw</button>
       <button
       id="fillbtn">
@@ -29,7 +32,7 @@
         </select>
       </label>
     </div>
-    <table>
+    <table id="table">
       <tr>
         <td></td>
         <td></td>
@@ -79,7 +82,5 @@
         <td></td>
       </tr>
     </table>
-    <script src="script.js"></script>
-    <script src="fill_clear.js"></script>
   </body>
 </html>
