@@ -4,10 +4,10 @@ td {
   width: 30px;
 }
 
-tr:nth-child(1) td:nth-child(2) {
+/* tr:nth-child(1) td:nth-child(2) {
   background-color: pink;
 }
 
 tr:nth-child(2) {
   background-color: orange;
-}
+} */
