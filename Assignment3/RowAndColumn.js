@@ -13,6 +13,7 @@ window.onload = function (){
         if(table.rows.length === 0){
             table.insertRow();
             table.rows[0].insertCell();
+            MakeAllCellsClickable();
         }
         else{
             let columns = table.rows[0].cells.length;
@@ -25,6 +26,7 @@ window.onload = function (){
                 table.deleteRow(-1);
                 alert("Whoa there, that's too many rows!");
             }
+            MakeAllCellsClickable();
         }
     })
 
@@ -63,8 +65,8 @@ window.onload = function (){
                     table.rows[i].insertCell(-1);
                 }        
             }
-
-            table.rows[0].deleteCell(-1);        
+            table.rows[0].deleteCell(-1);    
+            MakeAllCellsClickable();    
         }
     });
 

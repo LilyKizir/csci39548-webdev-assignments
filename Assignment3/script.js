@@ -1,4 +1,6 @@
-//Get all the table cells
+
+const MakeAllCellsClickable = () => {
+  //Get all the table cells
 var cells = document.querySelectorAll("td");
 
 // Add click event listener to each cell
@@ -8,3 +10,4 @@ cells.forEach((cell) => {
     this.style.backgroundColor = color;
   });
 });
+}
