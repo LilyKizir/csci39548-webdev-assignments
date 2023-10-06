@@ -2,6 +2,7 @@ td {
   border: #ccc 1px solid;
   height: 30px;
   width: 30px;
+  background-color: "";
 }
 
 /* tr:nth-child(1) td:nth-child(2) {
