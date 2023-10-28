@@ -1,15 +1,25 @@
 import { useState } from "react";
 
-function Cell() {}
+function MyTD( {dataKey, colorGiven} ) {
+  const [color, setColor] = useState("white");
 
-function Table({ rows, columns }) {
+  function clickHandler(theColor){
+    setColor(theColor);
+  }
+  return (
+    <td key={dataKey} style={{background:color}} onClick={() =>clickHandler(colorGiven)}></td>
+  )
+}
+
+function Table({ rows, columns, cellClickColor }) {
   let table = [];
 
   for (let i = 0; i < rows; i++) {
     let children = [];
 
     for (let j = 0; j < columns; j++) {
-      children.push(<td key={`${i}-${j}`}></td>);
+      var key = `${i}-${j}`
+      children.push(<MyTD key={key} colorGiven={cellClickColor}></MyTD>);
     }
 
     table.push(<tr key={i}>{children}</tr>);
@@ -73,7 +83,7 @@ export default function Board() {
           <option value="yellow">Yellow</option>
         </select>
       </label>
-      <Table rows={rowNum} columns={colNum} />
+      <Table rows={rowNum} columns={colNum} cellClickColor={'red'}/>
     </>
   );
 }
