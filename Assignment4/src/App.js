@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+function Cell() {}
+
 function Table({ rows, columns }) {
   let table = [];
 
@@ -60,6 +62,17 @@ export default function Board() {
       <button onClick={handleAddCol}>Add Column</button>
       <button onClick={handleRemoveRow}>Remove Row</button>
       <button onClick={handleRemoveCol}>Remove Column</button>
+      <button id="fillbtn">Fill All</button>
+      <button id="fillUncolored">Fill Uncolored</button>
+      <button id="clearbtn">Clear</button>
+      <label for="colors">
+        <select name="color" id="colorPicker">
+          <option value="">select a color</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+        </select>
+      </label>
       <Table rows={rowNum} columns={colNum} />
     </>
   );
