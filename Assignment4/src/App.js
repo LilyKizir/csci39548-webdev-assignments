@@ -1,13 +1,25 @@
 import { useState } from "react";
 
-function Table({ rows, columns }) {
+function MyTD( {dataKey, colorGiven} ) {
+  const [color, setColor] = useState("white");
+
+  function clickHandler(theColor){
+    setColor(theColor);
+  }
+  return (
+    <td key={dataKey} style={{background:color}} onClick={() =>clickHandler(colorGiven)}></td>
+  )
+}
+
+function Table({ rows, columns, cellClickColor }) {
   let table = [];
 
   for (let i = 0; i < rows; i++) {
     let children = [];
 
     for (let j = 0; j < columns; j++) {
-      children.push(<td key={`${i}-${j}`}></td>);
+      var key = `${i}-${j}`
+      children.push(<MyTD key={key} colorGiven={cellClickColor}></MyTD>);
     }
 
     table.push(<tr key={i}>{children}</tr>);
@@ -60,7 +72,18 @@ export default function Board() {
       <button onClick={handleAddCol}>Add Column</button>
       <button onClick={handleRemoveRow}>Remove Row</button>
       <button onClick={handleRemoveCol}>Remove Column</button>
-      <Table rows={rowNum} columns={colNum} />
+      <button id="fillbtn">Fill All</button>
+      <button id="fillUncolored">Fill Uncolored</button>
+      <button id="clearbtn">Clear</button>
+      <label for="colors">
+        <select name="color" id="colorPicker">
+          <option value="">select a color</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+        </select>
+      </label>
+      <Table rows={rowNum} columns={colNum} cellClickColor={'red'}/>
     </>
   );
 }
