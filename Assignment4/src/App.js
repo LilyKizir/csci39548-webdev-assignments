@@ -11,7 +11,7 @@ function MyTD({ dataKey, colorGiven }) {
   );
 }
 
-function Table({ rows, columns, cellClickColor }) {
+function MyTable({ rows, columns, cellClickColor }) {
   let table = [];
 
   for (let i = 0; i < rows; i++) {
@@ -36,6 +36,10 @@ export default function Board() {
   const [rowNum, setRowNum] = useState(0);
   const [colNum, setColNum] = useState(0);
   const [color, setColor] = useState("");
+
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  };
 
   function handleAddRow() {
     if (rowNum === 0 || colNum === 0) {
@@ -67,10 +71,6 @@ export default function Board() {
     }
   }
 
-  const handleColorChange = (event) => {
-    setColor(event.target.value);
-  };
-
   const handleUncolored = () => {
     const table = document.querySelector("table");
     table.querySelectorAll("td").forEach((cell) => {
@@ -78,15 +78,23 @@ export default function Board() {
     });
   };
 
+  function handleFillAll() {
+    //Uriel TODO
+  }
+
+  function handleClearAll() {
+    //Uriel TODO
+  }
+
   return (
     <>
       <button onClick={handleAddRow}>Add Row</button>
       <button onClick={handleAddCol}>Add Column</button>
       <button onClick={handleRemoveRow}>Remove Row</button>
       <button onClick={handleRemoveCol}>Remove Column</button>
-      <button id="fillbtn">Fill All</button>
+      <button onClick={null}>Fill All</button>
       <button onClick={handleUncolored}>Fill Uncolored</button>
-      <button id="clearbtn">Clear</button>
+      <button onClick={null}>Clear</button>
       <label for="colors">
         <select name="color" id="colorPicker" onChange={handleColorChange}>
           <option value="">Select a color</option>
@@ -115,7 +123,7 @@ export default function Board() {
           <option value="lavender">Lavender</option>
         </select>
       </label>
-      <Table rows={rowNum} columns={colNum} cellClickColor={color} />
+      <MyTable rows={rowNum} columns={colNum} cellClickColor={color} />
     </>
   );
 }
