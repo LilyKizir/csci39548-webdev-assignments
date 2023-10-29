@@ -79,8 +79,11 @@ export default function Board() {
   };
 
   function handleFillAll() {
-    //Uriel TODO
-  }
+    const table = document.querySelector("table");
+    table.querySelectorAll("td").forEach((cell) => {
+        cell.style.backgroundColor = color;
+    });
+  };
 
   function handleClearAll() {
     //Uriel TODO
@@ -92,7 +95,7 @@ export default function Board() {
       <button onClick={handleAddCol}>Add Column</button>
       <button onClick={handleRemoveRow}>Remove Row</button>
       <button onClick={handleRemoveCol}>Remove Column</button>
-      <button onClick={null}>Fill All</button>
+      <button onClick={handleFillAll}>Fill All</button>
       <button onClick={handleUncolored}>Fill Uncolored</button>
       <button onClick={null}>Clear</button>
       <label for="colors">
