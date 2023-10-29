@@ -26,13 +26,15 @@ function MyTable({ rows, columns, cellClickColor }) {
   }
 
   return (
-    <table>
+    <table id="tableId">
       <tbody>{table}</tbody>
     </table>
   );
 }
 
 export default function Board() {
+  // const tableWidth = document.getElementById("tableId").clientWidth;
+
   const [rowNum, setRowNum] = useState(0);
   const [colNum, setColNum] = useState(0);
   const [color, setColor] = useState("");
@@ -45,6 +47,11 @@ export default function Board() {
     if (rowNum === 0 || colNum === 0) {
       setColNum(1);
       setRowNum(1);
+    } else if (
+      document.getElementById("tableId").clientHeight >
+      window.innerHeight - 60
+    ) {
+      alert("That is too many rows!");
     } else {
       setRowNum(rowNum + 1);
     }
@@ -54,20 +61,35 @@ export default function Board() {
     if (rowNum === 0 || colNum === 0) {
       setColNum(1);
       setRowNum(1);
+    } else if (
+      document.getElementById("tableId").clientWidth >
+      window.innerWidth - 60
+    ) {
+      alert("That is too many columns!");
     } else {
       setColNum(colNum + 1);
     }
   }
 
   function handleRemoveRow() {
-    if (rowNum > 0) {
+    if (rowNum > 1) {
       setRowNum(rowNum - 1);
+    } else if (rowNum === 1) {
+      setRowNum(rowNum - 1);
+      setColNum(0);
+    } else {
+      alert("No more rows to remove!");
     }
   }
 
   function handleRemoveCol() {
-    if (colNum > 0) {
+    if (colNum > 1) {
       setColNum(colNum - 1);
+    } else if (colNum === 1) {
+      setColNum(colNum - 1);
+      setRowNum(0);
+    } else {
+      alert("No more columns to remove!");
     }
   }
 
@@ -81,16 +103,16 @@ export default function Board() {
   function handleFillAll() {
     const table = document.querySelector("table");
     table.querySelectorAll("td").forEach((cell) => {
-        cell.style.backgroundColor = color;
+      cell.style.backgroundColor = color;
     });
-  };
+  }
 
   function handleClearAll() {
     const table = document.querySelector("table");
     table.querySelectorAll("td").forEach((cell) => {
-        cell.style.backgroundColor = "";
+      cell.style.backgroundColor = "";
     });
-  };
+  }
 
   return (
     <>
@@ -101,7 +123,7 @@ export default function Board() {
       <button onClick={handleFillAll}>Fill All</button>
       <button onClick={handleUncolored}>Fill Uncolored</button>
       <button onClick={handleClearAll}>Clear</button>
-      <label for="colors">
+      <label form="colors">
         <select name="color" id="colorPicker" onChange={handleColorChange}>
           <option value="">Select a color</option>
           <option value="red">Red</option>
