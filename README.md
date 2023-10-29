@@ -21,4 +21,4 @@ https://lk20918n.github.io/csci39548-webdev-assignments/Assignment3/index.html
 https://lk20918n.github.io/csci39548-webdev-assignments/Assignment4/build
 
 > [!NOTE]
-> Assignment 34 is an exercise in creating the same custom pixel art canvas as Assignment 3 but using React
+> Assignment 4 is an exercise in creating the same custom pixel art canvas as Assignment 3 but using React
