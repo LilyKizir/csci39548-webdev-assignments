@@ -1,10 +1,14 @@
 import { useState } from "react";
 
-function MyTD( {dataKey, colorGiven} ) {
-  const [color, setColor] = useState(colorGiven)
+function MyTD({ dataKey, colorGiven }) {
+  const [color, setColor] = useState("");
   return (
-    <td key={dataKey} style={{background:color}} onClick={() => setColor(colorGiven)}></td>
-  )
+    <td
+      key={dataKey}
+      style={{ background: color }}
+      onClick={() => setColor(colorGiven)}
+    ></td>
+  );
 }
 
 function Table({ rows, columns, cellClickColor }) {
@@ -14,7 +18,7 @@ function Table({ rows, columns, cellClickColor }) {
     let children = [];
 
     for (let j = 0; j < columns; j++) {
-      var key = `${i}-${j}`
+      var key = `${i}-${j}`;
       children.push(<MyTD key={key} colorGiven={cellClickColor}></MyTD>);
     }
 
@@ -63,19 +67,16 @@ export default function Board() {
     }
   }
 
-  const handleColorChange = (event)=>{
-    setColor(event.target.value)
-  }
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  };
 
-  const handleUncolored = ()=>{
-    const table = document.querySelector('table')
-    table.querySelectorAll('tr').forEach((cell) =>{
-      if(cell.style.backgroundColor === '')
-        cell.style.backgroundColor = color;
-    })
-
-
-  }
+  const handleUncolored = () => {
+    const table = document.querySelector("table");
+    table.querySelectorAll("td").forEach((cell) => {
+      if (cell.style.backgroundColor === "") cell.style.backgroundColor = color;
+    });
+  };
 
   return (
     <>
@@ -88,7 +89,7 @@ export default function Board() {
       <button id="clearbtn">Clear</button>
       <label for="colors">
         <select name="color" id="colorPicker" onChange={handleColorChange}>
-        <option value="">Select a color</option>
+          <option value="">Select a color</option>
           <option value="red">Red</option>
           <option value="green">Green</option>
           <option value="blue">Blue</option>
@@ -114,7 +115,7 @@ export default function Board() {
           <option value="lavender">Lavender</option>
         </select>
       </label>
-      <Table rows={rowNum} columns={colNum} cellClickColor={color}/>
+      <Table rows={rowNum} columns={colNum} cellClickColor={color} />
     </>
   );
 }
