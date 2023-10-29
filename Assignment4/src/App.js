@@ -46,7 +46,13 @@ export default function Board() {
       setColNum(1);
       setRowNum(1);
     } else {
+      let rows = rowNum;
       setRowNum(rowNum + 1);
+      rows++;
+      if(document.body.clientHeight > window.innerHeight-30){
+        alert("That is too many rows!");
+        setRowNum(rows-1);
+      }
     }
   }
 
@@ -55,19 +61,41 @@ export default function Board() {
       setColNum(1);
       setRowNum(1);
     } else {
+      const table = document.querySelector("table");
+      let cols = colNum;
+    
       setColNum(colNum + 1);
+      cols++;
+      if(table.rows[0].cells[0].offsetWidth < 30){
+        alert("That is too many columns!");
+        setColNum(cols-1);
+      }
     }
   }
 
   function handleRemoveRow() {
-    if (rowNum > 0) {
+    if (rowNum > 1) {
       setRowNum(rowNum - 1);
+    }
+    else if(rowNum === 1){
+      setRowNum(rowNum - 1);
+      setColNum(0);
+    }
+    else{
+      alert("No more rows to remove!");
     }
   }
 
   function handleRemoveCol() {
-    if (colNum > 0) {
+    if (colNum > 1) {
       setColNum(colNum - 1);
+    }
+    else if(colNum === 1){
+      setColNum(colNum - 1);
+      setRowNum(0);
+    }
+    else{
+      alert("No more columns to remove!");
     }
   }
 
