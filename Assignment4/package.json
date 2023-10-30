@@ -1,16 +1,21 @@
 {
+  "homepage": "https://lk20918n.github.io/Assignment4/build",
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.0"
   },
   "main": "/index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  },
   "name": "vy6j3f",
   "description": null,
   "version": "0.0.0",
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

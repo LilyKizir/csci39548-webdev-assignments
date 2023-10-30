@@ -15,3 +15,10 @@ https://lk20918n.github.io/csci39548-webdev-assignments/Assignment3/index.html
 
 > [!NOTE]
 > Assignment 3 is an exercise in creating a custom pixel art canvas using javascript functions that we learned from assignment 2 and exercise accessing the DOM
+
+### Assignment 4 link:
+
+https://lk20918n.github.io/csci39548-webdev-assignments/Assignment4/build
+
+> [!NOTE]
+> Assignment 4 is an exercise in creating the same custom pixel art canvas as Assignment 3 but using React
