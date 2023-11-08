@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Gallery() {
-  const [pictureData, setPictureData] = useState({ title: null, url: null, explanation: null, username: null });
+  const [pictureData, setPictureData] = useState({ title: null, url: null, explanation: null, username: null, userLink: null });
   const [query, setQuery] = useState("food");
 
   const endpoint = 'https://api.unsplash.com/photos/random?client_id=IZmoCbCGKKTr4fDIWDH1SObu3dr3PJaG4h6aeJfO75I&query=';
@@ -14,7 +14,8 @@ export default function Gallery() {
             title: json.alt_description,
             url: json.urls.regular,
             explanation: json.description,
-            username: "Picture by: " + json.user.name
+            username: "Picture by: " + json.user.name,
+            userLink: json.user.links.html
         });
         })
   }
@@ -31,7 +32,8 @@ export default function Gallery() {
                 title: json.alt_description,
                 url: json.urls.regular,
                 explanation: json.description,
-                username: "Picture by: " + json.user.name
+                username: "Picture by: " + json.user.name,
+                userLink: json.user.links.html
             });
         })
         .catch(error => console.error(error));
@@ -52,7 +54,7 @@ export default function Gallery() {
       <img src={pictureData.url} alt={pictureData.explanation} />
       <h2>{pictureData.title}</h2>
       <p>{pictureData.explanation}</p>
-      <p>{pictureData.username}</p>
+      <a href={pictureData.userLink} >{pictureData.username}</a>
     </>
   );
 }
