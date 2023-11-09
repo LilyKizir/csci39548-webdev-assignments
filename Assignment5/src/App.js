@@ -23,6 +23,7 @@ export default function Gallery() {
         });
         setImgId(json.id);
         setLoadedImage(true);
+        setClickedStatsBtn(false);
         })
   }
 
@@ -43,6 +44,7 @@ export default function Gallery() {
             });
             setImgId(json.id);
             setLoadedImage(true);
+            setClickedStatsBtn(false);
         })
         .catch(error => console.error(error));
   }
