@@ -1,5 +1,34 @@
 import { useState } from "react";
 
+function MyUserData({userData}){
+  return (
+    <div>
+    <h2>User Details</h2>
+    <p>Username: {userData.username}</p>
+    <p>Name: {userData.name}</p>
+    <p>Location: {userData.location}</p>
+    <p>Bio: {userData.bio}</p>
+    <p>Total photos: {userData.total_photos}</p>
+    <p>Total followers: {userData.followers_count}</p>
+  </div>
+  )
+}
+
+function MyStats ({stats}){
+  return (
+       <ul>
+              <li>Total Downloads: {stats.downloads}</li>
+              <li>
+                Downloads in the last 30 days: {stats.downloadsLastThirty}
+              </li>
+              <li>Total Likes: {stats.likes}</li>
+              <li>Total Views: {stats.views}</li>
+              <li>Views in the last 30 days: {stats.viewsLastThirty}</li>
+            </ul>
+  ); 
+}
+
+
 export default function Gallery() {
   const [pictureData, setPictureData] = useState({
     title: null,
@@ -72,7 +101,7 @@ export default function Gallery() {
   let getStats = () => {
     fetch(`https://api.unsplash.com/photos/${imgId}/statistics`, {
       headers: {
-        Authorization: "Client-ID 7B3CH3BWU0rb1zCMN4-CEVShZygiksQztkwJPa0R7mo",
+        Authorization: "Client-ID IZmoCbCGKKTr4fDIWDH1SObu3dr3PJaG4h6aeJfO75I",
       },
     })
       .then((res) => res.json())
@@ -126,30 +155,14 @@ export default function Gallery() {
           <h2>Get Image Statistics</h2>
           <button onClick={getStats}>Get Stats</button>
           {clickedStatsBtn && (
-            <ul>
-              <li>Total Downloads: {stats.downloads}</li>
-              <li>
-                Downloads in the last 30 days: {stats.downloadsLastThirty}
-              </li>
-              <li>Total Likes: {stats.likes}</li>
-              <li>Total Views: {stats.views}</li>
-              <li>Views in the last 30 days: {stats.viewsLastThirty}</li>
-            </ul>
+            <MyStats stats={stats}></MyStats>
           )}
           <div>
             <hr />
             <h2>Get Image Author Data</h2>
             <button onClick={getUserData}>Get Author Data</button>
             {clickedUserData && (
-              <div>
-                <h2>User Details</h2>
-                <p>Username: {userData.username}</p>
-                <p>Name: {userData.name}</p>
-                <p>Location: {userData.location}</p>
-                <p>Bio: {userData.bio}</p>
-                <p>Total photos: {userData.total_photos}</p>
-                <p>Total followers: {userData.followers_count}</p>
-              </div>
+              <MyUserData userData={userData}></MyUserData>
             )}
           </div>
         </div>
