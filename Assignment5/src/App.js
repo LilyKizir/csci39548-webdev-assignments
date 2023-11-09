@@ -39,8 +39,10 @@ export default function Gallery() {
           userLink: json.user.links.html,
         });
         setImgId(json.id);
+        setUserID(json.user.username);
         setLoadedImage(true);
         setClickedStatsBtn(false);
+        setClickedUserData(false);
       });
   }
 
@@ -60,8 +62,10 @@ export default function Gallery() {
           userLink: json.user.links.html,
         });
         setImgId(json.id);
+        setUserID(json.user.username);
         setLoadedImage(true);
         setClickedStatsBtn(false);
+        setClickedUserData(false);
       })
       .catch((error) => console.error(error));
   }
