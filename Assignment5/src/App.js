@@ -1,33 +1,30 @@
 import { useState } from "react";
 
-function MyUserData({userData}){
+function MyUserData({ userData }) {
   return (
     <div>
-    <h2>User Details</h2>
-    <p>Username: {userData.username}</p>
-    <p>Name: {userData.name}</p>
-    <p>Location: {userData.location}</p>
-    <p>Bio: {userData.bio}</p>
-    <p>Total photos: {userData.total_photos}</p>
-    <p>Total followers: {userData.followers_count}</p>
-  </div>
-  )
+      <h2>User Details</h2>
+      <p>Username: {userData.username}</p>
+      <p>Name: {userData.name}</p>
+      <p>Location: {userData.location}</p>
+      <p>Bio: {userData.bio}</p>
+      <p>Total photos: {userData.total_photos}</p>
+      <p>Total followers: {userData.followers_count}</p>
+    </div>
+  );
 }
 
-function MyStats ({stats}){
+function MyStats({ stats }) {
   return (
-       <ul>
-              <li>Total Downloads: {stats.downloads}</li>
-              <li>
-                Downloads in the last 30 days: {stats.downloadsLastThirty}
-              </li>
-              <li>Total Likes: {stats.likes}</li>
-              <li>Total Views: {stats.views}</li>
-              <li>Views in the last 30 days: {stats.viewsLastThirty}</li>
-            </ul>
-  ); 
+    <ul>
+      <li>Total Downloads: {stats.downloads}</li>
+      <li>Downloads in the last 30 days: {stats.downloadsLastThirty}</li>
+      <li>Total Likes: {stats.likes}</li>
+      <li>Total Views: {stats.views}</li>
+      <li>Views in the last 30 days: {stats.viewsLastThirty}</li>
+    </ul>
+  );
 }
-
 
 export default function Gallery() {
   const [pictureData, setPictureData] = useState({
@@ -135,38 +132,64 @@ export default function Gallery() {
 
   return (
     <>
-      <h2>Get Random Photo</h2>
-      <button onClick={randomPhoto}> Generate</button>
+      <div class="generator d-flex m-4 justify-content-center">
+        <div>
+          <h2>Get Random Photo</h2>
+          <button onClick={randomPhoto}> Generate</button>
+        </div>
+
+        <p class="p-2 m-2 border">Or</p>
+
+        <div>
+          <h2>Get Themed Photo</h2>
+
+          <input
+            onChange={handleQueryChange}
+            value={query}
+            placeholder="Pick a topic"
+          />
+
+          <button onClick={handleGetPictureClick}>Generate</button>
+        </div>
+      </div>
+
       <hr />
-      <h2>Random Photo with Query</h2>
-      <label>
-        Generate Picture with Query:
-        <input onChange={handleQueryChange} value={query} />
-      </label>
-      <button onClick={handleGetPictureClick}>Get Picture</button>
-      <br></br>
-      <img src={pictureData.url} alt={pictureData.explanation} />
-      <h2>{pictureData.title}</h2>
-      <p>{pictureData.explanation}</p>
-      <a href={pictureData.userLink}>{pictureData.username}</a>
-      {loadedImage && (
+
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <img
+            class="img-fluid"
+            src={pictureData.url}
+            alt={pictureData.explanation}
+            style={{ height: "500px" }}
+          />
+        </div>
+
+        <h2>{pictureData.title}</h2>
+        <p>{pictureData.explanation}</p>
+        <a href={pictureData.userLink}>{pictureData.username}</a>
+
         <div>
           <hr />
-          <h2>Get Image Statistics</h2>
-          <button onClick={getStats}>Get Stats</button>
-          {clickedStatsBtn && (
-            <MyStats stats={stats}></MyStats>
+          {loadedImage && (
+            <div class="d-flex m-5 justify-content-center">
+              <div class="m-5 col-6">
+                <h2>Get Image Statistics</h2>
+                <button onClick={getStats}>Get Stats</button>
+                {clickedStatsBtn && <MyStats stats={stats}></MyStats>}
+              </div>
+
+              <div class="m-5 col-6">
+                <h2>Get Image Author Data</h2>
+                <button onClick={getUserData}>Get Author Data</button>
+                {clickedUserData && (
+                  <MyUserData userData={userData}></MyUserData>
+                )}
+              </div>
+            </div>
           )}
-          <div>
-            <hr />
-            <h2>Get Image Author Data</h2>
-            <button onClick={getUserData}>Get Author Data</button>
-            {clickedUserData && (
-              <MyUserData userData={userData}></MyUserData>
-            )}
-          </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
