@@ -22,3 +22,10 @@ https://lk20918n.github.io/csci39548-webdev-assignments/Assignment4/build
 
 > [!NOTE]
 > Assignment 4 is an exercise in creating the same custom pixel art canvas as Assignment 3 but using React
+
+### Assignment 5 link:
+
+https://lk20918n.github.io/csci39548-webdev-assignments/Assignment5/build
+
+> [!NOTE]
+> Assignment 5 is an exercise in using data retrieved from an API
