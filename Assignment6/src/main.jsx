@@ -8,7 +8,7 @@ import {
 //import Gallery  from './App';
 import RandomApp from './Random page/RandomApp'
 import Root from "./routes/root";
-import Query from './Query-Page/Query';
+import QueryApp from './Query-Page/QueryApp';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/query",
-    element: <Query/>,
+    element: <QueryApp/>,
   },
 
 ]);
