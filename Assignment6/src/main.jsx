@@ -6,7 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 //import Gallery  from './App';
-import Random from './Random';
+import RandomApp from './Random page/RandomApp'
 import Root from "./routes/root";
 import Query from './Query';
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/random",
-    element: <Random/>,
+    element: <RandomApp/>,
   },
   {
     path: "/query",

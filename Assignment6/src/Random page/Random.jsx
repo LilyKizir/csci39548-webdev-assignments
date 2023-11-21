@@ -1,4 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { setPicture, selectPictureData } from "./RandomPictureDataSlice";
+import { setStats, selectImageStats } from "./RandomImageStatsSlice";
+import { setUser, selectUserData } from "./RandomUserDataSlice";
 
 function MyUserData({ userData }) {
   return (
@@ -27,25 +31,33 @@ function MyStats({ stats }) {
 }
 
 export default function Random() {
-  const [pictureData, setPictureData] = useState({
+  const pictureData = useSelector(selectPictureData);
+  const dispatch = useDispatch();
+  
+  /*const [pictureData, setPictureData] = useState({
     title: null,
     url: null,
     explanation: null,
     username: null,
     userLink: null,
-  });
+  });*/
   const [imgId, setImgId] = useState(null);
   const [loadedImage, setLoadedImage] = useState(false);
   const [clickedStatsBtn, setClickedStatsBtn] = useState(false);
-  const [stats, setStats] = useState({
+  
+  const stats = useSelector(selectImageStats);
+  /*const [stats, setStats] = useState({
     downloads: null,
     downloadsLastThirty: null,
     likes: null,
     views: null,
     viewsLastThirty: null,
-  });
+  });*/
   const [userID, setUserID] = useState(null);
-  const [userData, setUserData] = useState(null);
+
+  const userData = useSelector(selectUserData);
+  //const [userData, setUserData] = useState(null);
+  
   const [clickedUserData, setClickedUserData] = useState(false);
 
   function randomPhoto() {
@@ -54,13 +66,15 @@ export default function Random() {
     )
       .then((response) => response.json())
       .then((json) => {
-        setPictureData({
+        dispatch(setPicture(json));
+        /*setPictureData({
           title: json.alt_description,
           url: json.urls.regular,
           explanation: json.description,
           username: "Picture by: " + json.user.name,
           userLink: json.user.links.html,
-        });
+
+        });*/
         setImgId(json.id);
         setUserID(json.user.username);
         setLoadedImage(true);
@@ -79,13 +93,14 @@ export default function Random() {
       .then((json) => {
         console.log(json);
         setClickedStatsBtn(true);
-        setStats({
+        dispatch(setStats(json));
+        /*setStats({
           downloads: json.downloads.total,
           downloadsLastThirty: json.downloads.historical.change,
           likes: json.likes.total,
           views: json.views.total,
           viewsLastThirty: json.views.historical.change,
-        });
+        });*/
       })
       .catch((error) => console.log(error));
   };
@@ -99,7 +114,8 @@ export default function Random() {
       .then((response) => response.json())
       .then((userData) => {
         setClickedUserData(true);
-        setUserData(userData); // Set the user data in the state
+        dispatch(setUser(userData));
+        //setUserData(userData); // Set the user data in the state
       })
       .catch((error) => console.error(error));
   };
