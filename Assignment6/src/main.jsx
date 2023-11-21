@@ -16,13 +16,14 @@ const router = createBrowserRouter([
     element: <Root />,
   },
   {
-    path: "/Random",
+    path: "/random",
     element: <Random/>,
   },
   {
-    path: "/Query",
+    path: "/query",
     element: <Query/>,
   },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
