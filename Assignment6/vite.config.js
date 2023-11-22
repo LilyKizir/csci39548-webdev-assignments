@@ -12,6 +12,6 @@ export default defineConfig({
       },
     },
   },
-  base: "https://BrajanHalili.github.io/csci39548-webdev-assignments/Assignment6/build",
+  base: "/",
   plugins: [react()],
 })
