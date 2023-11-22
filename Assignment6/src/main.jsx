@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import RandomApp from "./Random page/RandomApp";
 import Root from "./routes/root";
-import Query from "./Query";
+import Query from "./store/Wrapper";
 
 const router = createBrowserRouter([
   {

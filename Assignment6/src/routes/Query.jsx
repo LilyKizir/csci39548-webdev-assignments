@@ -1,5 +1,8 @@
-import { useState } from "react";
-// import { link } from "react-router-dom";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setPicture, selectPictureData } from "../store/PictureDataSlice";
+import { setStats, selectImageStats } from "../store/ImageStatsSlice";
+import { setUser, selectUserData } from "../store/UserDataSlice";
 
 function MyUserData({ userData }) {
   return (
@@ -28,26 +31,31 @@ function MyStats({ stats }) {
 }
 
 export default function Query() {
-  const [pictureData, setPictureData] = useState({
-    title: null,
-    url: null,
-    explanation: null,
-    username: null,
-    userLink: null,
-  });
+  const pictureData = useSelector(selectPictureData);
+  const dispatch = useDispatch();
+  // const [pictureData, setPictureData] = useState({
+  //   title: null,
+  //   url: null,
+  //   explanation: null,
+  //   username: null,
+  //   userLink: null,
+  // });
   const [query, setQuery] = useState("food");
   const [imgId, setImgId] = useState(null);
   const [loadedImage, setLoadedImage] = useState(false);
   const [clickedStatsBtn, setClickedStatsBtn] = useState(false);
-  const [stats, setStats] = useState({
-    downloads: null,
-    downloadsLastThirty: null,
-    likes: null,
-    views: null,
-    viewsLastThirty: null,
-  });
+  const stats = useSelector(selectImageStats);
+  // const [stats, setStats] = useState({
+  //   downloads: null,
+  //   downloadsLastThirty: null,
+  //   likes: null,
+  //   views: null,
+  //   viewsLastThirty: null,
+  // });
   const [userID, setUserID] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const userData = useSelector(selectUserData);
+  // const [userData, setUserData] = useState(null);
+
   const [clickedUserData, setClickedUserData] = useState(false);
   const endpoint =
     "https://api.unsplash.com/photos/random?client_id=IZmoCbCGKKTr4fDIWDH1SObu3dr3PJaG4h6aeJfO75I&query=";
@@ -56,27 +64,64 @@ export default function Query() {
     setQuery(e.target.value);
   }
 
+  // function handleGetPictureClick() {
+  //   fetch(endpoint + query)
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setPictureData({
+  //         title: json.alt_description,
+  //         url: json.urls.regular,
+  //         explanation: json.description,
+  //         username: "Picture by: " + json.user.name,
+  //         userLink: json.user.links.html,
+  //       });
+  //       setImgId(json.id);
+  //       setUserID(json.user.username);
+  //       setLoadedImage(true);
+  //       setClickedStatsBtn(false);
+  //       setClickedUserData(false);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }
   function handleGetPictureClick() {
     fetch(endpoint + query)
       .then((response) => response.json())
       .then((json) => {
-        setPictureData({
-          title: json.alt_description,
-          url: json.urls.regular,
-          explanation: json.description,
-          username: "Picture by: " + json.user.name,
-          userLink: json.user.links.html,
-        });
-        setImgId(json.id);
-        setUserID(json.user.username);
+        dispatch(setPicture(json));
+
+        //whats this for?
+        setImgId(pictureData.id);
+        setUserID(pictureData.username);
+        //question end
+
         setLoadedImage(true);
         setClickedStatsBtn(false);
         setClickedUserData(false);
       })
       .catch((error) => console.error(error));
   }
+  // let getStats = () => {
+  //   fetch(`https://api.unsplash.com/photos/${pictureData.id}/statistics`, {
+  //     headers: {
+  //       Authorization: "Client-ID IZmoCbCGKKTr4fDIWDH1SObu3dr3PJaG4h6aeJfO75I",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       console.log(json);
+  //       setClickedStatsBtn(true);
+  //       setStats({
+  //         downloads: json.downloads.total,
+  //         downloadsLastThirty: json.downloads.historical.change,
+  //         likes: json.likes.total,
+  //         views: json.views.total,
+  //         viewsLastThirty: json.views.historical.change,
+  //       });
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
   let getStats = () => {
-    fetch(`https://api.unsplash.com/photos/${imgId}/statistics`, {
+    fetch(`https://api.unsplash.com/photos/${pictureData.id}/statistics`, {
       headers: {
         Authorization: "Client-ID IZmoCbCGKKTr4fDIWDH1SObu3dr3PJaG4h6aeJfO75I",
       },
@@ -85,19 +130,26 @@ export default function Query() {
       .then((json) => {
         console.log(json);
         setClickedStatsBtn(true);
-        setStats({
-          downloads: json.downloads.total,
-          downloadsLastThirty: json.downloads.historical.change,
-          likes: json.likes.total,
-          views: json.views.total,
-          viewsLastThirty: json.views.historical.change,
-        });
+        dispatch(setStats(json));
       })
       .catch((error) => console.log(error));
   };
 
+  // let getUserData = () => {
+  //   fetch(`https://api.unsplash.com/users/${userID}`, {
+  //     headers: {
+  //       Authorization: "Client-ID 7B3CH3BWU0rb1zCMN4-CEVShZygiksQztkwJPa0R7mo",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((userData) => {
+  //       setClickedUserData(true);
+  //       setUserData(userData); // Set the user data in the state
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
   let getUserData = () => {
-    fetch(`https://api.unsplash.com/users/${userID}`, {
+    fetch(`https://api.unsplash.com/users/${pictureData.username}`, {
       headers: {
         Authorization: "Client-ID 7B3CH3BWU0rb1zCMN4-CEVShZygiksQztkwJPa0R7mo",
       },
@@ -105,7 +157,7 @@ export default function Query() {
       .then((response) => response.json())
       .then((userData) => {
         setClickedUserData(true);
-        setUserData(userData); // Set the user data in the state
+        dispatch(setUser(userData));
       })
       .catch((error) => console.error(error));
   };
