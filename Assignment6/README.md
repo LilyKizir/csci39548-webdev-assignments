@@ -1,8 +1,11 @@
-# React + Vite
+## APIs Used
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Unsplash API
+- **API Provider**: Unsplash
+- **API Name (if any)**: (N/A)
+- **Screenshot of a Successful API Test in Postman for that endpoint**
+  ![Alt text](image.png)
+- **Link to the API Documentation**: [Unsplash API Documentation](https://unsplash.com/documentation)
+- **Description**: We used the Unsplash API to enhance our site's content by generating completely random images or specific-topic random images. This API allowed us to retrieve high definition images and their associated statistics.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  **Notes**: Because of the license we used for the API we are limited to only 50 calls to it per hour
