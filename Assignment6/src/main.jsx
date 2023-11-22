@@ -15,12 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/csci39548-webdev-assignments/Assignment6/build/random",
+    path: "/random",
     element: <RandomApp />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/csci39548-webdev-assignments/Assignment6/build/query",
+    path: "/query",
     element: <Query />,
     errorElement: <ErrorPage />,
   },
