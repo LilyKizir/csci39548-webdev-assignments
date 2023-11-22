@@ -29,3 +29,10 @@ https://lk20918n.github.io/csci39548-webdev-assignments/Assignment5/build
 
 > [!NOTE]
 > Assignment 5 is an exercise in using data retrieved from an API
+
+### Assignment 6 link:
+
+https://lk20918n.github.io/csci39548-webdev-assignments/Assignment6/build
+
+> [!NOTE]
+> Assignment 6 is an exercise in updating our API site from Assignment 5 to use React Routing and Redux
