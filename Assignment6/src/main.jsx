@@ -10,7 +10,7 @@ import Query from "./store/Wrapper";
 
 const router = createBrowserRouter([
   {
-    path: "/csci39548-webdev-assignments/Assignment6/build",
+    path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
   },
