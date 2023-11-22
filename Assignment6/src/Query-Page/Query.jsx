@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import { link } from "react-router-dom";
 
 function MyUserData({ userData }) {
@@ -28,13 +29,13 @@ function MyStats({ stats }) {
 }
 
 export default function Query() {
-  const [pictureData, setPictureData] = useState({
+ /* const [pictureData, setPictureData] = useState({
     title: null,
     url: null,
     explanation: null,
     username: null,
     userLink: null,
-  });
+  }); */
   const [query, setQuery] = useState("food");
   const [imgId, setImgId] = useState(null);
   const [loadedImage, setLoadedImage] = useState(false);
