@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //import Gallery  from './App';
-import ErrorPage from "./error-page";
+import ErrorPage from "./routes/error-page";
 import RandomApp from "./Random page/RandomApp";
 import Root from "./routes/root";
 import Query from "./store/Wrapper";
