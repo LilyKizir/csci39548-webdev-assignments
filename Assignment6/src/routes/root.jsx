@@ -8,11 +8,11 @@ export default function Root() {
       <ul>
         <li>
           {/* Endpoint to route to About component */}
-          <Link to="/random">Click to go to the Random page</Link>
+          <Link to="/csci39548-webdev-assignments/Assignment6/build/random">Click to go to the Random page</Link>
         </li>
         <li>
           {/* Endpoint to route to Home component */}
-          <Link to="/query">Click to go to the Query Page</Link>
+          <Link to="/csci39548-webdev-assignments/Assignment6/build/query">Click to go to the Query Page</Link>
         </li>
       </ul>
     </>
