@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPicture, selectPictureData } from "./RandomPictureDataSlice";
 import { setStats, selectImageStats } from "./RandomImageStatsSlice";
 import { setUser, selectUserData } from "./RandomUserDataSlice";
+import { Outlet, Link } from "react-router-dom";
 
 function MyUserData({ userData }) {
   return (
@@ -151,16 +152,18 @@ export default function Random() {
             <div class="d-flex m-5 justify-content-center">
               <div class="m-5 col-6">
                 <h2>Get Image Statistics</h2>
-                <button onClick={getStats}>Get Stats</button>
-                {clickedStatsBtn && <MyStats stats={stats}></MyStats>}
+                <Link to = "/random/stats">Get Statistics</Link>
+              </div>
+              <div>
+                <Outlet />
               </div>
 
               <div class="m-5 col-6">
                 <h2>Get Image Author Data</h2>
-                <button onClick={getUserData}>Get Author Data</button>
-                {clickedUserData && (
-                  <MyUserData userData={userData}></MyUserData>
-                )}
+                <Link to = "/random/authordata">Get Data</Link>
+              </div>
+              <div>
+                <Outlet />
               </div>
             </div>
           )}
